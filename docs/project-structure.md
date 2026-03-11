@@ -39,7 +39,7 @@ setokin/
 │       ├── deploy-staging.yml        # Deploy to staging
 │       └── deploy-production.yml     # Deploy to production
 │
-├── backend/
+├── api/
 │   ├── cmd/
 │   │   └── api/
 │   │       └── main.go              # Application entry point
@@ -115,10 +115,11 @@ setokin/
 │   ├── Dockerfile
 │   └── .air.toml                    # Hot reload config
 │
-├── frontend/
+├── web/
 │   ├── public/
 │   │   ├── favicon.ico
 │   │   └── images/
+│   ├── .env.local                   # Local env (gitignored)
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── (auth)/
@@ -204,13 +205,127 @@ setokin/
 │   │   │   └── index.ts
 │   │   └── styles/
 │   │       └── globals.css
-│   ├── .env.local                   # Local env (gitignored)
 │   ├── next.config.js
 │   ├── tailwind.config.ts
 │   ├── tsconfig.json
 │   ├── package.json
 │   ├── Dockerfile
 │   └── .eslintrc.json
+│
+├── mobile/
+│   ├── android/
+│   │   ├── app/
+│   │   │   ├── src/
+│   │   │   └── build.gradle
+│   │   ├── gradle/
+│   │   └── build.gradle
+│   ├── ios/
+│   │   ├── Runner/
+│   │   ├── Runner.xcodeproj/
+│   │   └── Runner.xcworkspace/
+│   ├── lib/
+│   │   ├── main.dart                # Application entry point
+│   │   ├── app/
+│   │   │   ├── routes/
+│   │   │   │   └── app_routes.dart  # Route definitions
+│   │   │   └── theme/
+│   │   │       ├── app_theme.dart   # Theme configuration
+│   │   │       └── app_colors.dart  # Color palette
+│   │   ├── core/
+│   │   │   ├── constants/
+│   │   │   │   ├── api_constants.dart
+│   │   │   │   └── app_constants.dart
+│   │   │   ├── services/
+│   │   │   │   ├── api_service.dart # HTTP client
+│   │   │   │   ├── auth_service.dart
+│   │   │   │   └── storage_service.dart
+│   │   │   ├── utils/
+│   │   │   │   ├── validators.dart
+│   │   │   │   ├── formatters.dart
+│   │   │   │   └── helpers.dart
+│   │   │   └── errors/
+│   │   │       └── app_exception.dart
+│   │   ├── data/
+│   │   │   ├── models/
+│   │   │   │   ├── user.dart
+│   │   │   │   ├── item.dart
+│   │   │   │   ├── batch.dart
+│   │   │   │   ├── stock_in.dart
+│   │   │   │   ├── stock_out.dart
+│   │   │   │   ├── category.dart
+│   │   │   │   ├── unit.dart
+│   │   │   │   └── supplier.dart
+│   │   │   ├── repositories/
+│   │   │   │   ├── auth_repository.dart
+│   │   │   │   ├── item_repository.dart
+│   │   │   │   ├── stock_repository.dart
+│   │   │   │   └── report_repository.dart
+│   │   │   └── providers/
+│   │   │       ├── auth_provider.dart
+│   │   │       ├── item_provider.dart
+│   │   │       └── stock_provider.dart
+│   │   ├── presentation/
+│   │   │   ├── screens/
+│   │   │   │   ├── auth/
+│   │   │   │   │   ├── login_screen.dart
+│   │   │   │   │   └── register_screen.dart
+│   │   │   │   ├── dashboard/
+│   │   │   │   │   └── dashboard_screen.dart
+│   │   │   │   ├── inventory/
+│   │   │   │   │   └── inventory_screen.dart
+│   │   │   │   ├── items/
+│   │   │   │   │   ├── items_list_screen.dart
+│   │   │   │   │   ├── item_detail_screen.dart
+│   │   │   │   │   └── item_form_screen.dart
+│   │   │   │   ├── stock_in/
+│   │   │   │   │   ├── stock_in_list_screen.dart
+│   │   │   │   │   └── stock_in_form_screen.dart
+│   │   │   │   ├── stock_out/
+│   │   │   │   │   ├── stock_out_list_screen.dart
+│   │   │   │   │   └── stock_out_form_screen.dart
+│   │   │   │   ├── batches/
+│   │   │   │   │   └── batches_screen.dart
+│   │   │   │   ├── reports/
+│   │   │   │   │   ├── reports_screen.dart
+│   │   │   │   │   ├── daily_report_screen.dart
+│   │   │   │   │   ├── weekly_report_screen.dart
+│   │   │   │   │   └── monthly_report_screen.dart
+│   │   │   │   └── settings/
+│   │   │   │       └── settings_screen.dart
+│   │   │   ├── widgets/
+│   │   │   │   ├── common/
+│   │   │   │   │   ├── app_button.dart
+│   │   │   │   │   ├── app_text_field.dart
+│   │   │   │   │   ├── app_card.dart
+│   │   │   │   │   ├── loading_indicator.dart
+│   │   │   │   │   └── error_widget.dart
+│   │   │   │   ├── items/
+│   │   │   │   │   ├── item_card.dart
+│   │   │   │   │   └── item_list_tile.dart
+│   │   │   │   ├── batches/
+│   │   │   │   │   └── batch_card.dart
+│   │   │   │   └── charts/
+│   │   │   │       ├── usage_chart.dart
+│   │   │   │       └── stock_chart.dart
+│   │   │   └── controllers/
+│   │   │       ├── auth_controller.dart
+│   │   │       ├── item_controller.dart
+│   │   │       ├── stock_controller.dart
+│   │   │       └── report_controller.dart
+│   │   └── generated/
+│   │       └── l10n/                # Localization files
+│   ├── test/
+│   │   ├── unit/
+│   │   ├── widget/
+│   │   └── integration/
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── icons/
+│   │   └── fonts/
+│   ├── pubspec.yaml
+│   ├── pubspec.lock
+│   ├── analysis_options.yaml
+│   └── README.md
 │
 ├── db/
 │   ├── db.sql                       # Main schema
@@ -264,7 +379,7 @@ setokin/
 
 ## Technology Stack
 
-### Backend
+### API (Backend)
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
@@ -275,7 +390,7 @@ setokin/
 | Air | latest | Hot reload |
 | Testify | latest | Testing framework |
 
-### Frontend
+### Web (Frontend)
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
@@ -287,6 +402,21 @@ setokin/
 | Phosphor Icons | latest | Icon set |
 | React Query | latest | Data fetching |
 | Zustand | latest | State management |
+
+### Mobile
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Flutter | 3.16+ | Mobile framework |
+| Dart | 3.2+ | Programming language |
+| GetX | 4.6+ | State management & routing |
+| Dio | 5.4+ | HTTP client |
+| Flutter Secure Storage | 9.0+ | Secure token storage |
+| Freezed | 2.4+ | Code generation for models |
+| Flutter Riverpod | 2.4+ | Alternative state management |
+| FL Chart | 0.66+ | Charts and graphs |
+| Cached Network Image | 3.3+ | Image caching |
+| Image Picker | 1.0+ | Camera & gallery access |
 
 ### Infrastructure
 
@@ -339,9 +469,13 @@ MINIO_SECRET_KEY=minioadmin
 MINIO_BUCKET=setokin
 MINIO_USE_SSL=false
 
-# Frontend
+# Web Frontend
 NEXT_PUBLIC_API_URL=http://localhost:8080/v1
 NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# Mobile
+FLUTTER_API_URL=http://10.0.2.2:8080/v1  # Android emulator
+# FLUTTER_API_URL=http://localhost:8080/v1  # iOS simulator
 
 # Nginx
 NGINX_PORT=80
@@ -362,9 +496,10 @@ cp .env.example .env
 make dev
 
 # 4. Access application
-# Frontend: http://localhost:3000
-# Backend API: http://localhost:8080
+# Web: http://localhost:3000
+# API: http://localhost:8080
 # MinIO Console: http://localhost:9001
+# Mobile: Run from Android Studio / Xcode
 ```
 
 ---
@@ -376,14 +511,16 @@ make dev
 ```makefile
 # Development
 make dev              # Start all services in development mode
-make dev-frontend     # Start only frontend
-make dev-backend      # Start only backend
+make dev-web          # Start only web frontend
+make dev-api          # Start only API backend
+make dev-mobile       # Start mobile app (Flutter)
 make dev-db           # Start only database
 
 # Testing
 make test             # Run all tests
-make test-backend     # Run backend tests
-make test-frontend    # Run frontend tests
+make test-api         # Run API tests
+make test-web         # Run web tests
+make test-mobile      # Run mobile tests
 make test-integration # Run integration tests
 
 # Database
@@ -395,16 +532,19 @@ make db-restore       # Restore database from backup
 
 # Code Quality
 make lint             # Run linters
-make lint-backend     # Lint backend code
-make lint-frontend    # Lint frontend code
+make lint-api         # Lint API code
+make lint-web         # Lint web code
+make lint-mobile      # Lint mobile code
 make format           # Format code
-make format-backend   # Format backend code
-make format-frontend  # Format frontend code
+make format-api       # Format API code
+make format-web       # Format web code
+make format-mobile    # Format mobile code
 
 # Build
 make build            # Build all services
-make build-backend    # Build backend
-make build-frontend   # Build frontend
+make build-api        # Build API
+make build-web        # Build web
+make build-mobile     # Build mobile (APK/IPA)
 make build-nginx      # Build nginx
 
 # Production Simulation
@@ -418,11 +558,11 @@ make clean-all        # Clean everything
 
 # Utilities
 make logs             # View all logs
-make logs-backend     # View backend logs
-make logs-frontend    # View frontend logs
+make logs-api         # View API logs
+make logs-web         # View web logs
 make logs-db          # View database logs
-make shell-backend    # Shell into backend container
-make shell-frontend   # Shell into frontend container
+make shell-api        # Shell into API container
+make shell-web        # Shell into web container
 make shell-db         # Shell into database container
 ```
 
@@ -475,7 +615,7 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./api
       dockerfile: Dockerfile
       target: development
     environment:
@@ -502,7 +642,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./web
       dockerfile: Dockerfile
       target: development
     environment:
@@ -532,10 +672,14 @@ Internet
     ↓
 [Nginx] (Port 80/443)
     ↓
-    ├─→ [Frontend Container] (Next.js)
-    ├─→ [Backend Container] (Go Fiber)
+    ├─→ [Web Container] (Next.js)
+    ├─→ [API Container] (Go Fiber)
     ├─→ [PostgreSQL Container]
     └─→ [MinIO Container]
+
+Mobile App (Flutter)
+    ↓
+[API Container] (Go Fiber)
 ```
 
 #### GitHub Actions Workflow
@@ -623,7 +767,7 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./api
       dockerfile: Dockerfile
       target: production
     restart: always
@@ -653,7 +797,7 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./web
       dockerfile: Dockerfile
       target: production
     restart: always
@@ -709,7 +853,7 @@ volumes:
 
 ## Best Practices
 
-### Backend (Go)
+### API (Backend - Go)
 
 #### Project Structure
 
@@ -841,7 +985,7 @@ func TestItemService_GetItems(t *testing.T) {
 
 ---
 
-### Frontend (Next.js)
+### Web (Frontend - Next.js)
 
 #### Project Structure
 
@@ -1002,6 +1146,366 @@ export function useItems() {
 
 ---
 
+### Mobile (Flutter)
+
+#### Project Structure
+
+```
+lib/
+├── main.dart          # Entry point
+├── app/               # App-level configuration
+├── core/              # Core utilities & services
+├── data/              # Data layer (models, repos, providers)
+└── presentation/      # UI layer (screens, widgets, controllers)
+```
+
+#### Naming Conventions
+
+- **Files**: `snake_case.dart`
+- **Classes**: `PascalCase`
+- **Functions**: `camelCase`
+- **Variables**: `camelCase`
+- **Constants**: `lowerCamelCase` or `SCREAMING_SNAKE_CASE`
+- **Private members**: `_prefixWithUnderscore`
+
+#### Code Organization
+
+```dart
+// data/models/item.dart
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'item.freezed.dart';
+part 'item.g.dart';
+
+@freezed
+class Item with _$Item {
+  const factory Item({
+    required String id,
+    required String name,
+    required String categoryId,
+    required String unitId,
+    required double minimumStock,
+    String? description,
+    @Default(true) bool isActive,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+  }) = _Item;
+
+  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+}
+
+// data/repositories/item_repository.dart
+abstract class ItemRepository {
+  Future<List<Item>> getItems();
+  Future<Item> getItemById(String id);
+  Future<Item> createItem(CreateItemDto dto);
+  Future<Item> updateItem(String id, UpdateItemDto dto);
+  Future<void> deleteItem(String id);
+}
+
+class ItemRepositoryImpl implements ItemRepository {
+  final ApiService _apiService;
+
+  ItemRepositoryImpl(this._apiService);
+
+  @override
+  Future<List<Item>> getItems() async {
+    final response = await _apiService.get('/items');
+    return (response.data['data'] as List)
+        .map((json) => Item.fromJson(json))
+        .toList();
+  }
+}
+
+// presentation/controllers/item_controller.dart
+class ItemController extends GetxController {
+  final ItemRepository _repository;
+  
+  ItemController(this._repository);
+
+  final items = <Item>[].obs;
+  final isLoading = false.obs;
+  final error = Rxn<String>();
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchItems();
+  }
+
+  Future<void> fetchItems() async {
+    try {
+      isLoading.value = true;
+      error.value = null;
+      items.value = await _repository.getItems();
+    } catch (e) {
+      error.value = e.toString();
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> createItem(CreateItemDto dto) async {
+    try {
+      isLoading.value = true;
+      final item = await _repository.createItem(dto);
+      items.add(item);
+      Get.back();
+      Get.snackbar('Success', 'Item created successfully');
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+}
+
+// presentation/screens/items/items_list_screen.dart
+class ItemsListScreen extends StatelessWidget {
+  const ItemsListScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.find<ItemController>();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Items'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => Get.toNamed(Routes.ITEM_FORM),
+          ),
+        ],
+      ),
+      body: Obx(() {
+        if (controller.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (controller.error.value != null) {
+          return Center(
+            child: Text('Error: ${controller.error.value}'),
+          );
+        }
+
+        return ListView.builder(
+          itemCount: controller.items.length,
+          itemBuilder: (context, index) {
+            final item = controller.items[index];
+            return ItemListTile(
+              item: item,
+              onTap: () => Get.toNamed(
+                Routes.ITEM_DETAIL,
+                arguments: item.id,
+              ),
+            );
+          },
+        );
+      }),
+    );
+  }
+}
+```
+
+#### API Service
+
+```dart
+// core/services/api_service.dart
+import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+class ApiService {
+  late final Dio _dio;
+  final FlutterSecureStorage _storage;
+
+  ApiService(this._storage) {
+    _dio = Dio(BaseOptions(
+      baseURL: const String.fromEnvironment('API_URL'),
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(seconds: 30),
+    ));
+
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) async {
+        final token = await _storage.read(key: 'access_token');
+        if (token != null) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
+        return handler.next(options);
+      },
+      onError: (error, handler) async {
+        if (error.response?.statusCode == 401) {
+          // Try to refresh token
+          final refreshed = await _refreshToken();
+          if (refreshed) {
+            // Retry original request
+            return handler.resolve(await _retry(error.requestOptions));
+          }
+        }
+        return handler.next(error);
+      },
+    ));
+  }
+
+  Future<bool> _refreshToken() async {
+    try {
+      final refreshToken = await _storage.read(key: 'refresh_token');
+      if (refreshToken == null) return false;
+
+      final response = await _dio.post('/auth/refresh', data: {
+        'refresh_token': refreshToken,
+      });
+
+      await _storage.write(
+        key: 'access_token',
+        value: response.data['data']['access_token'],
+      );
+      await _storage.write(
+        key: 'refresh_token',
+        value: response.data['data']['refresh_token'],
+      );
+
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<Response> _retry(RequestOptions requestOptions) async {
+    final options = Options(
+      method: requestOptions.method,
+      headers: requestOptions.headers,
+    );
+    return _dio.request(
+      requestOptions.path,
+      data: requestOptions.data,
+      queryParameters: requestOptions.queryParameters,
+      options: options,
+    );
+  }
+
+  Future<Response> get(String path, {Map<String, dynamic>? queryParameters}) {
+    return _dio.get(path, queryParameters: queryParameters);
+  }
+
+  Future<Response> post(String path, {dynamic data}) {
+    return _dio.post(path, data: data);
+  }
+
+  Future<Response> put(String path, {dynamic data}) {
+    return _dio.put(path, data: data);
+  }
+
+  Future<Response> delete(String path) {
+    return _dio.delete(path);
+  }
+}
+```
+
+#### State Management with GetX
+
+```dart
+// app/routes/app_routes.dart
+class Routes {
+  static const LOGIN = '/login';
+  static const DASHBOARD = '/dashboard';
+  static const ITEMS = '/items';
+  static const ITEM_DETAIL = '/items/:id';
+  static const ITEM_FORM = '/items/form';
+  static const STOCK_IN = '/stock-in';
+  static const STOCK_OUT = '/stock-out';
+  static const REPORTS = '/reports';
+}
+
+class AppPages {
+  static final pages = [
+    GetPage(
+      name: Routes.LOGIN,
+      page: () => const LoginScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: Routes.DASHBOARD,
+      page: () => const DashboardScreen(),
+      binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: Routes.ITEMS,
+      page: () => const ItemsListScreen(),
+      binding: ItemBinding(),
+    ),
+    // ... more routes
+  ];
+}
+
+// Dependency injection
+class ItemBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => ItemController(Get.find<ItemRepository>()));
+  }
+}
+```
+
+#### Testing
+
+```dart
+// test/unit/controllers/item_controller_test.dart
+void main() {
+  late ItemController controller;
+  late MockItemRepository mockRepository;
+
+  setUp(() {
+    mockRepository = MockItemRepository();
+    controller = ItemController(mockRepository);
+  });
+
+  group('ItemController', () {
+    test('fetchItems should update items list on success', () async {
+      // Arrange
+      final items = [
+        Item(
+          id: '1',
+          name: 'Test Item',
+          categoryId: 'cat1',
+          unitId: 'unit1',
+          minimumStock: 5.0,
+          isActive: true,
+          createdAt: DateTime.now(),
+          updatedAt: DateTime.now(),
+        ),
+      ];
+      when(() => mockRepository.getItems()).thenAnswer((_) async => items);
+
+      // Act
+      await controller.fetchItems();
+
+      // Assert
+      expect(controller.items.length, 1);
+      expect(controller.items.first.name, 'Test Item');
+      expect(controller.isLoading.value, false);
+      expect(controller.error.value, null);
+    });
+
+    test('fetchItems should set error on failure', () async {
+      // Arrange
+      when(() => mockRepository.getItems()).thenThrow(Exception('Network error'));
+
+      // Act
+      await controller.fetchItems();
+
+      // Assert
+      expect(controller.items.length, 0);
+      expect(controller.error.value, isNotNull);
+      expect(controller.isLoading.value, false);
+    });
+  });
+}
+```
+
+---
+
 ### Database
 
 #### Migration Strategy
@@ -1041,7 +1545,7 @@ ORDER BY expiry_date ASC;
 #### Multi-stage Builds
 
 ```dockerfile
-# backend/Dockerfile
+# api/Dockerfile
 # Development stage
 FROM golang:1.21-alpine AS development
 WORKDIR /app
@@ -1057,7 +1561,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/api
+RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/server
 
 # Production stage
 FROM alpine:latest AS production
@@ -1069,7 +1573,7 @@ CMD ["./main"]
 ```
 
 ```dockerfile
-# frontend/Dockerfile
+# web/Dockerfile
 # Development stage
 FROM node:20-alpine AS development
 WORKDIR /app
@@ -1117,11 +1621,15 @@ feature/xxx (feature branches)
 
 ```
 feat: add stock out FEFO logic
+feat(mobile): add offline mode support
 fix: resolve batch depletion bug
+fix(api): fix JWT token refresh
 docs: update API documentation
 refactor: improve item service structure
 test: add integration tests for stock operations
+test(mobile): add widget tests
 chore: update dependencies
+chore(mobile): upgrade Flutter to 3.16
 ```
 
 ---
@@ -1214,7 +1722,7 @@ func HealthCheck(c *fiber.Ctx) error {
 
 ## Performance Optimization
 
-### Backend
+### API (Backend)
 
 - Use connection pooling for database
 - Implement caching with Redis (future)
@@ -1222,13 +1730,22 @@ func HealthCheck(c *fiber.Ctx) error {
 - Optimize database queries with proper indexes
 - Use pagination for large datasets
 
-### Frontend
+### Web (Frontend)
 
 - Use Next.js Image optimization
 - Implement code splitting
 - Use React.memo for expensive components
 - Lazy load routes and components
 - Optimize bundle size
+
+### Mobile
+
+- Implement offline-first architecture
+- Use cached_network_image for images
+- Lazy load lists with pagination
+- Optimize build size (remove unused packages)
+- Use const constructors where possible
+- Implement proper error boundaries
 
 ---
 
@@ -1274,5 +1791,131 @@ make build --no-cache
 
 ---
 
-**Last Updated:** 11 Maret 2026  
+## Mobile Development Setup
+
+### Prerequisites
+
+- Flutter SDK 3.16+
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
+- Android SDK & Emulator
+- iOS Simulator (macOS only)
+
+### Setup Instructions
+
+```bash
+# 1. Install Flutter dependencies
+cd mobile
+flutter pub get
+
+# 2. Generate code (Freezed, JSON serialization)
+flutter pub run build_runner build --delete-conflicting-outputs
+
+# 3. Run on Android emulator
+flutter run
+
+# 4. Run on iOS simulator (macOS only)
+flutter run -d ios
+
+# 5. Build APK (Android)
+flutter build apk --release
+
+# 6. Build IPA (iOS, macOS only)
+flutter build ios --release
+```
+
+### Environment Configuration
+
+```dart
+// lib/core/constants/api_constants.dart
+class ApiConstants {
+  static const String baseUrl = String.fromEnvironment(
+    'API_URL',
+    defaultValue: 'http://10.0.2.2:8080/v1', // Android emulator
+  );
+  
+  static const Duration connectTimeout = Duration(seconds: 30);
+  static const Duration receiveTimeout = Duration(seconds: 30);
+}
+```
+
+### Running with different environments
+
+```bash
+# Development
+flutter run --dart-define=API_URL=http://10.0.2.2:8080/v1
+
+# Staging
+flutter run --dart-define=API_URL=https://staging-api.setokin.com/v1
+
+# Production
+flutter run --dart-define=API_URL=https://api.setokin.com/v1
+```
+
+### Mobile-specific Features
+
+- **Offline Mode**: Cache data locally using Hive/SQLite
+- **Camera Integration**: Scan barcodes for items
+- **Push Notifications**: Expiry alerts via FCM
+- **Biometric Auth**: Fingerprint/Face ID login
+- **Dark Mode**: Support system theme
+- **Localization**: Indonesian & English support
+
+---
+
+## Platform-specific Notes
+
+### Android
+
+- Minimum SDK: 21 (Android 5.0)
+- Target SDK: 34 (Android 14)
+- Permissions required:
+  - Internet
+  - Camera (for barcode scanning)
+  - Storage (for file uploads)
+
+### iOS
+
+- Minimum iOS: 12.0
+- Permissions required (Info.plist):
+  - NSCameraUsageDescription
+  - NSPhotoLibraryUsageDescription
+  - NSLocationWhenInUseUsageDescription (future)
+
+---
+
+## Cross-platform Considerations
+
+### API Compatibility
+
+All three platforms (Web, Mobile) consume the same REST API:
+
+```
+Web (Next.js) ──┐
+                ├──→ API (Go Fiber) ──→ PostgreSQL
+Mobile (Flutter)┘
+```
+
+### Shared Features
+
+- JWT authentication with refresh tokens
+- FEFO stock management
+- Real-time inventory updates
+- Expiry alerts
+- Comprehensive reporting
+
+### Platform-specific Features
+
+| Feature | Web | Mobile |
+|---------|-----|--------|
+| Offline Mode | ❌ | ✅ |
+| Camera/Barcode | ❌ | ✅ |
+| Push Notifications | ❌ | ✅ |
+| File Upload | ✅ | ✅ |
+| Responsive Design | ✅ | Native |
+| PWA Support | ✅ | N/A |
+
+---
+
+**Last Updated:** 11 Maret 2026
 **Maintained By:** Setokin Developer (Rafa)
