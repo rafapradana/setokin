@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+.next/
+
+# Build output
+out/
+
+# Misc
+.DS_Store
+*.tsbuildinfo
