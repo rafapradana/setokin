@@ -1,0 +1,51 @@
+# =============================================================================
+# Setokin Root .gitignore
+# =============================================================================
+
+# Environment
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Docker
+docker-compose.override.yml
+
+# Backups
+backups/
+
+# Logs
+*.log
+
+# Go
+api/tmp/
+api/vendor/
+
+# Node
+web/node_modules/
+web/.next/
+web/out/
+
+# Mobile
+mobile/.dart_tool/
+mobile/.packages
+mobile/build/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/android/.gradle/
+mobile/ios/Pods/
+
+# Misc
+*.bak
+*.tmp

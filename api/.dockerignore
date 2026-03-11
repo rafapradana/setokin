@@ -1,0 +1,6 @@
+# Build artifacts
+tmp/
+
+# IDE
+.idea/
+.vscode/
