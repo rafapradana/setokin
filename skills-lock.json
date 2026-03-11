@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "b4f33ddc8f9c0df854b62d4a5adf2d8f104735d6d611d3ebb40fd9dd531cb7f3"
     },
+    "golang-pro": {
+      "source": "jeffallan/claude-skills",
+      "sourceType": "github",
+      "computedHash": "517209072b5cbeb7dfdb41f634ecff658e34e7c9e081e425d618378e9818a941"
+    },
     "postgresql-best-practices": {
       "source": "wimolivier/postgresql-best-practices",
       "sourceType": "github",
