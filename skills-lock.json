@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "postgresql-best-practices": {
+      "source": "wimolivier/postgresql-best-practices",
+      "sourceType": "github",
+      "computedHash": "3559d6abf65d968f475378e998544b59759636af6ff33a34fb5b82e94d410b3d"
+    }
+  }
+}
