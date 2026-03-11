@@ -10,6 +10,11 @@
       "source": "wimolivier/postgresql-best-practices",
       "sourceType": "github",
       "computedHash": "3559d6abf65d968f475378e998544b59759636af6ff33a34fb5b82e94d410b3d"
+    },
+    "test-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "computedHash": "126f1ebf6ccd414f42544f6e83d8cc5adb089e1108eaffb7c400701e37eecd9f"
     }
   }
 }
