@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "api-design": {
+      "source": "scientiacapital/skills",
+      "sourceType": "github",
+      "computedHash": "b4f33ddc8f9c0df854b62d4a5adf2d8f104735d6d611d3ebb40fd9dd531cb7f3"
+    },
     "postgresql-best-practices": {
       "source": "wimolivier/postgresql-best-practices",
       "sourceType": "github",
