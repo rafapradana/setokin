@@ -14,12 +14,19 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o main ./cmd/api
+# -s -w removes symbol table and DWARF debugging information to reduce binary size
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o main ./cmd/api
 
 # Production stage
 FROM alpine:latest AS production
 RUN apk --no-cache add ca-certificates curl
-WORKDIR /root/
+# Create a non-privileged user
+RUN addgroup -S setokin && adduser -S setokin -G setokin
+WORKDIR /home/setokin
 COPY --from=builder /app/main .
+RUN chown setokin:setokin main
+
+USER setokin
+
 EXPOSE 8080
 CMD ["./main"]
